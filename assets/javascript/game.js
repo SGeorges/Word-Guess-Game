@@ -8,20 +8,19 @@ var solverText = document.getElementById("solverText");
 var wrongGuessesText = document.getElementById("wrongGuessesText");
 var resultText = document.getElementById("resultText");
 
+var audioElement = document.createElement("audio");
+
 var solutions = [
-    "glyph",
-    "conoptic",
-    "obtuse",
-    "hydrate",
+    "starlight",
+    "showman",
+    "refugee",
+    "bright",
     "antithesis"
 ]
 var guesses = []
 
 // THIS FUNCTION CHECKS IF YOU'VE GUESSED THE WORD CORRECTLY
 function solChecker( x, word ) {
-    // console.log("---Checker Running---");
-    // console.log("The word being checked: " + word);
-    // console.log("The letter being checked: " + x);
     var output = []
 
     for (var i= 0; i < x.length; i++) {
@@ -55,11 +54,7 @@ function guessChecker(userGuess, guessBank) {
 }
 
 // THIS FUNCTION WRITES OUT THE WORD BASED ON WHAT USER HAS GUESSED
-function writer( x, word ) {
-    // console.log("---Writer Running---");
-    // console.log("The word being checked: "+ word);
-    // console.log("The guesses being checked: " +x);
-    
+function writer( x, word ) {    
     var output = []
 
     for (var i = 0; i < word.length; i++) {
@@ -92,9 +87,10 @@ document.onkeyup = function(event) {
         console.log(h);
 
     }
-
+    // Checks if the userGuess is a letter. Numbers/characters don't count.
     if (acceptableGuesses.indexOf(userGuess) != -1) {
 
+        // Checks if the userGuess has already been guessed
         if (guessChecker(userGuess, guesses)) {
             guesses.push(userGuess);
             h = writer(guesses, word);
@@ -102,15 +98,52 @@ document.onkeyup = function(event) {
             numGuesses++;
         }
 
-
         counterText.textContent = 15 - numGuesses;
         wrongGuessesText.textContent = guesses;
         console.log(numGuesses);
         console.log(guesses);
 
+        // Checks if the user has entered all of the letters in the word 
         if (solChecker(guesses, word)) {
+            guesses = [];
+            numGuesses = 0;
+            index++;
+
+            writer(guesses, solutions[index]);
+
+            counterText.textContent = 15 - numGuesses;
+            wrongGuessesText.textContent = guesses;
             resultText.textContent= "Congratz! The word was " + word;
+
+            switch (index) {
+                case 1: 
+                audioElement.setAttribute("src", "assets/images/MUSE - Starlight.mp3");
+                audioElement.play();
+                break;
+
+                case 2:
+                audioElement.setAttribute("src", "assets/images/Panic! At The Disco - The Greatest Show (from The Greatest Showman Reimagined).mp3");
+                audioElement.play();
+                break;
+
+                case 3:
+                audioElement.setAttribute("src", "assets/images/Rise Against - Prayer Of The Refugee.mp3");
+                audioElement.play();
+                break;
+
+                case 4:
+                audioElement.setAttribute("src", "assets/images/The Killers - Mr. Brightside.mp3");
+                audioElement.play();
+                break;
+                
+
+                default:
+                break;
+            }
+
+
         }
+        // Checks if the user has run out of guesses
         if ((15-numGuesses) === 0) {
             resultText.textContent= "OH no, you've run out of guesses. The word was " + word;
         }
