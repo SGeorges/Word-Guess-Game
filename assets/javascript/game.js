@@ -27,13 +27,13 @@ var solutions = [
 var guesses = []
 
 // THIS FUNCTION CHECKS IF YOU'VE GUESSED THE WORD CORRECTLY
-function solChecker( x, word ) {
+function solChecker( guessBank, word ) {
     var output = []
 
-    for (var i= 0; i < x.length; i++) {
+    for (var i= 0; i < guessBank.length; i++) {
         for (var j=0; j < word.length; j++) {
-            if (word.charAt(j) === x[i]) {
-                output[j] = x[i];
+            if (word.charAt(j) === guessBank[i]) {
+                output[j] = guessBank[i];
             }
         }
     }
@@ -61,17 +61,17 @@ function guessChecker(userGuess, guessBank) {
 }
 
 // THIS FUNCTION WRITES OUT THE WORD BASED ON WHAT USER HAS GUESSED
-function writer( x, word ) {    
+function writer( guessBank, word ) {    
     var output = []
 
     for (var i = 0; i < word.length; i++) {
         output[i] = "_";
     }
 
-    for (var i= 0; i < x.length; i++) {
+    for (var i= 0; i < guessBank.length; i++) {
         for (var j=0; j < word.length; j++) {
-            if (word.charAt(j) === x[i]) {
-                output[j] = x[i];
+            if (word.charAt(j) === guessBank[i]) {
+                output[j] = guessBank[i];
             }
         }
     }
