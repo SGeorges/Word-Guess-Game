@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Word Guessing Game</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Linking CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Linking Font -->
@@ -17,31 +19,63 @@
         <h1>Word Guessing Game</h1>
     </header>
 
-    <p id="resultText"></p>
-
     <div id="game">
         <p> Press any key to get started!</p>
 
-        <br>
-        <p>Wins</p>
-        <p id="winsText">0</p>
+        <p id="resultText"></p>
 
-        <p> Current Word </p>
-        <p id="solverText"></p>
-
-        <br>
-
-        <p> Number of Miss Guesses Remaining </p>
-        <p id="counterText">5</p>
-
-        <p> Letters Already Guessed </p>
-        <p id="guessesText"></p>
-
-        <br>
-
-        <img id= "endGame" src="" alt="">
+        <button type= "button" class= "btn btn-light" onclick= "gameReset()">Restart</button>
 
     </div>
+
+    <div class= "container">
+        <div class= "row">
+            <div class= "col-md-6">
+
+                <div id= "game-card" class= "card mb-3 h-100">
+                    <div class= "p-3 row">
+                        <div class= "col-md-12">
+                            <img class= "w-100" src= "./assets/images/hangman/hangman-0.jpg" id= "hangman-img" alt= "...">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class= "col-md-6">
+
+                <div id= "game-card" class= "card mb-3 h-100">
+                    <div class= "p-3 row">
+                        <div class= "col-md-12">
+                            <div class= "card-body dflex flex-column h-100">
+                                <br>
+                                <p class= "text-center">Wins</p>
+                                <p id="winsText" class= "text-center">0</p>
+                        
+                                <p class= "text-center"> Current Word </p>
+                                <p id="solverText" class= "text-center"></p>
+                        
+                                <br>
+                        
+                                <p class= "text-center"> Number of Miss Guesses Remaining </p>
+                                <p id="counterText" class= "text-center">8</p>
+                        
+                                <p class= "text-center"> Letters Already Guessed </p>
+                                <p id="guessesText" class= "text-center"></p>
+                        
+                                <br>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Linking JavaScript -->
     <script type="text/javascript" src="assets/javascript/game-objects.js"></script>
@@ -50,3 +84,4 @@
 
 
 </html>
+

@@ -78,8 +78,9 @@ var hangman = {
             };
         };
 
+        $("#hangman-img").attr("src", "./assets/images/hangman/hangman-" + this.misses + ".jpg");
         document.getElementById("guessesText").textContent = this.guessBank.join("  ");
-        document.getElementById("counterText").textContent= 5 - this.misses;
+        document.getElementById("counterText").textContent= 8 - this.misses;
 
     },
 
@@ -95,11 +96,13 @@ var hangman = {
             this.misses = 0;
             this.guessBank = [];
 
+
             document.getElementById("guessesText").textContent = "";
-            document.getElementById("counterText").textContent = 5;
+            document.getElementById("counterText").textContent = 8;
             document.getElementById("winsText").textContent = this.index;
 
             if (this.index < this.words.length) {
+                $("#hangman-img").attr("src", "./assets/images/hangman/hangman-" + this.misses + ".jpg");
                 hangman.writeWord();
             }
             else {
@@ -118,8 +121,10 @@ var hangman = {
         this.lockGame = false;
 
         document.getElementById("guessesText").textContent = "";
-        document.getElementById("counterText").textContent = 5;
+        document.getElementById("counterText").textContent = 8;
         document.getElementById("winsText").textContent = this.index;
+        $("#hangman-img").attr("src", "./assets/images/hangman/hangman-0.jpg");
+
 
         this.generateOrder();
         this.writeWord();
@@ -130,8 +135,12 @@ var hangman = {
 
 function gameReset () {
     document.getElementById("winsText").textContent = hangman.index;
+    document.getElementById("resultText").textContent = "";
+
+    hangman.reset();
 
 }
+
 hangman.generateOrder();
 hangman.writeWord();
 
@@ -142,12 +151,12 @@ document.onkeyup = function(event) {
     if (hangman.lockGame != true) {
         hangman.addGuess( userGuess );
         hangman.writeWord();
-        if (hangman.misses < 5) {
+        if (hangman.misses < 8) {
             hangman.checkSolution();    
         }
         else {
             document.getElementById("resultText").textContent = "OH no, you've run out of guesses. The word was '" + hangman.wordOrder[hangman.index] + "'";
-            hangman.reset();
+            hangman.lockGame = true;
         }
     }
 

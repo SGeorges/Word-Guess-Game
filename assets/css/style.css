@@ -45,8 +45,18 @@ header{
 
 }
 
+#game-card {
+
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'ZCOOL XiaoWei', serif;
+
+}
+
 body{
     /* Koi Pond Background */
-    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/34330/248047a8db5f48e0de1c914f407a719922dc57bb.jpg);
-
+/*    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/34330/248047a8db5f48e0de1c914f407a719922dc57bb.jpg);
+*/
+    background-color: black;
 }
